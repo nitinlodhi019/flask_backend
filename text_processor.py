@@ -7,7 +7,7 @@ from nltk.stem import WordNetLemmatizer
 
 # Tell NLTK where to find the downloaded resources
 nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
-nltk.data.path.append(nltk_data_path)
+nltk.data.path = [nltk_data_path] + nltk.data.path  # prioritize your custom data
 
 # Load resources without downloading
 lemmatizer = WordNetLemmatizer()
