@@ -1,22 +1,18 @@
-# text_processor.py
+import os
 import re
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
-# Download NLTK data if not already present
-try:
-    stopwords.words('english')
-except LookupError:
-    import nltk
+# Tell NLTK where to find the downloaded resources
+nltk_data_path = os.path.join(os.path.dirname(__file__), 'nltk_data')
+nltk.data.path.append(nltk_data_path)
 
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    nltk.download('omw-1.4')
-
+# Load resources without downloading
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
+
 
 
 def preprocess_text(text):
